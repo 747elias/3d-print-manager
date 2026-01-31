@@ -2,6 +2,8 @@
 
 A modern, fully dockerized web app for managing 3D print jobs with automatic cost calculation, payment tracking, and comprehensive statistics.
 
+🌐 **Live Preview:** [https://747elias.github.io/3d-print-manager-preview/](https://747elias.github.io/3d-print-manager-preview/)
+
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
