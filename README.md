@@ -1,6 +1,6 @@
-# 🖨️ 3D-Druck Manager
+# 🖨️ 3D Print Manager
 
-Eine moderne, vollständig dockerisierte Web-App zur Verwaltung von 3D-Druckaufträgen mit automatischer Kostenberechnung, Zahlungstracking und umfassenden Statistiken.
+A modern, fully dockerized web app for managing 3D print jobs with automatic cost calculation, payment tracking, and comprehensive statistics.
 
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -9,160 +9,160 @@ Eine moderne, vollständig dockerisierte Web-App zur Verwaltung von 3D-Druckauft
 
 ## ✨ Features
 
-### Öffentlicher Bereich (Kein Login)
-- 🔍 Druckaufträge eintragen mit allen Details
-- 📸 Bilder hochladen
-- 🔗 Links zu Printables/Thingiverse hinzufügen
-- ⚖️ Filamentverbrauch in Gramm tracken
-- 📊 Alle Drucke in übersichtlichen Karten ansehen
-- 📈 **Detaillierte Statistiken mit Zeitraumfilter**
-  - Total Drucke, Filamentverbrauch, Kosten und Durchschnittspreise
-  - Drucke pro Monat (Balkendiagramm)
-  - Kosten pro Monat (Balkendiagramm)
-  - Filamentverbrauch über Zeit nach Typ (Liniendiagramm)
-  - Top 5 Drucker (Ranking)
-  - Durchschnittlicher Verbrauch pro Filamenttyp
+### Public Area (No Login Required)
+- 🔍 Submit print jobs with all details
+- 📸 Upload images
+- 🔗 Add links to Printables/Thingiverse
+- ⚖️ Track filament consumption in grams
+- 📊 View all prints in clear card layout
+- 📈 **Detailed statistics with time range filter**
+  - Total prints, filament consumption, costs and average prices
+  - Prints per month (bar chart)
+  - Costs per month (bar chart)
+  - Filament consumption over time by type (line chart)
+  - Top 5 printers (ranking)
+  - Average consumption per filament type
 
-### Admin-Bereich (Login erforderlich)
-- 🔐 Sicherer Login-Bereich
-- 💰 **Automatische Preisberechnung**: `(Gramm ÷ 1000) × Preis/kg`
-- 📈 Zahlungsübersicht pro Person
-- 🎨 Filamentverwaltung (Name + Preis/kg)
-- ✅ Zahlungsstatus setzen (offen/bezahlt)
-- ✏️ Drucke bearbeiten und löschen
-- 🔍 Filter nach Person und Status
-- 📊 Zusammenfassung aller offenen Beträge
+### Admin Area (Login Required)
+- 🔐 Secure login area
+- 💰 **Automatic price calculation**: `(grams ÷ 1000) × price/kg`
+- 📈 Payment overview per person
+- 🎨 Filament management (name + price/kg)
+- ✅ Set payment status (open/paid)
+- ✏️ Edit and delete prints
+- 🔍 Filter by person and status
+- 📊 Summary of all outstanding amounts
 
 ## 🚀 Quick Start
 
-### Voraussetzungen
-- Docker & Docker Compose installiert
-- Port 5000 frei
+### Prerequisites
+- Docker & Docker Compose installed
+- Port 5000 available
 
 ### Installation
 
-1. **Repository klonen**
+1. **Clone repository**
 ```bash
 git clone https://github.com/747elias/3d-print-manager.git
 cd 3d-print-manager
 ```
 
-2. **Admin-Passwort in `.env` setzen**
+2. **Set admin password in `.env`**
 
-Die `.env` Datei ist bereits im Repo. Öffne sie und setze dein Passwort:
+The `.env` file is already in the repo. Open it and set your password:
 ```env
-ADMIN_PASSWORD=dein_sicheres_passwort
-SECRET_KEY=ein_zufälliger_geheimer_schlüssel
+ADMIN_PASSWORD=your_secure_password
+SECRET_KEY=a_random_secret_key
 ```
 
-3. **Starten**
+3. **Start**
 ```bash
 docker compose up --build
 ```
 
-4. **App öffnen**
-- Hauptseite: http://localhost:5000
-- Admin-Login: http://localhost:5000/login.html
+4. **Open app**
+- Main page: http://localhost:5000
+- Admin login: http://localhost:5000/login.html
 
-**Standard Admin-Login:**
+**Default admin login:**
 - Username: `admin`
-- Passwort: Was du in der `.env` gesetzt hast
+- Password: What you set in the `.env` file
 
-## 📊 Statistiken-Feature
+## 📊 Statistics Feature
 
-Die Statistiken sind öffentlich zugänglich (kein Login erforderlich) und bieten umfassende Einblicke in deine 3D-Druck-Aktivitäten:
+The statistics are publicly accessible (no login required) and provide comprehensive insights into your 3D printing activities:
 
-### Verfügbare Statistiken:
-- **Dashboard-Cards**: Schnellübersicht über Gesamtzahlen
-  - Total Drucke im Zeitraum
-  - Total Filamentverbrauch (Gramm)
-  - Total Kosten (CHF)
-  - Durchschnittspreis pro Druck
+### Available Statistics:
+- **Dashboard Cards**: Quick overview of totals
+  - Total prints in time range
+  - Total filament consumption (grams)
+  - Total costs (CHF)
+  - Average price per print
 
-- **Zeitbasierte Analysen**:
-  - Drucke pro Monat (zeigt Aktivitätstrends)
-  - Kosten pro Monat (finanzielle Übersicht)
-  - Filamentverbrauch über Zeit (nach Filamenttyp gruppiert)
+- **Time-based Analysis**:
+  - Prints per month (shows activity trends)
+  - Costs per month (financial overview)
+  - Filament consumption over time (grouped by filament type)
 
-- **Vergleichsanalysen**:
-  - Top 5 aktivste Drucker
-  - Durchschnittlicher Verbrauch pro Filamenttyp
+- **Comparative Analysis**:
+  - Top 5 most active printers
+  - Average consumption per filament type
 
-### Zeitraumfilter:
-- Flexibles Datum-Filter (Von/Bis)
-- Zurücksetzen-Button für Gesamtansicht
-- Automatische Aktualisierung aller Charts
+### Time Range Filter:
+- Flexible date filter (From/To)
+- Reset button for overall view
+- Automatic update of all charts
 
-## 🏗️ Projektstruktur
+## 🏗️ Project Structure
 
 ```
 3d-print-manager/
 ├── backend/              # Python FastAPI Backend
-│   ├── app.py           # Haupt-API mit Statistics-Endpoint
-│   ├── models.py        # Datenbank-Modelle + Statistics-Queries
-│   ├── config.py        # Konfiguration
-│   ├── init_db.py       # DB-Initialisierung
+│   ├── app.py           # Main API with Statistics endpoint
+│   ├── models.py        # Database models + Statistics queries
+│   ├── config.py        # Configuration
+│   ├── init_db.py       # DB initialization
 │   ├── Dockerfile
 │   └── requirements.txt
 ├── frontend/            # HTML/CSS/JS Frontend
-│   ├── index.html       # Hauptseite mit Statistics-Tab
-│   ├── admin.html       # Admin-Dashboard
-│   ├── login.html       # Login-Seite
+│   ├── index.html       # Main page with Statistics tab
+│   ├── admin.html       # Admin dashboard
+│   ├── login.html       # Login page
 │   ├── css/
-│   │   └── style.css    # Styles inkl. Statistics-Layouts
+│   │   └── style.css    # Styles incl. Statistics layouts
 │   └── js/
-│       ├── app.js       # Main App + Statistics mit Chart.js
+│       ├── app.js       # Main app + Statistics with Chart.js
 │       ├── admin.js
 │       └── login.js
-├── data/                # SQLite Datenbank (wird erstellt)
-├── uploads/             # Hochgeladene Bilder (wird erstellt)
+├── data/                # SQLite database (created automatically)
+├── uploads/             # Uploaded images (created automatically)
 ├── docker-compose.yml
-├── .env                 # Umgebungsvariablen (Passwort hier setzen!)
+├── .env                 # Environment variables (set password here!)
 └── README.md
 ```
 
-## 🛠️ Verwendung
+## 🛠️ Usage
 
-### Druckauftrag erstellen
-1. Hauptseite öffnen
-2. Tab "Neuer Druck" auswählen
-3. Formular ausfüllen:
-   - Name des Drucks
-   - Wer hat gedruckt
-   - Filamentverbrauch in Gramm
-   - Filamenttyp auswählen
-   - Optional: Bild und Link hinzufügen
-4. Speichern - Preis wird automatisch berechnet!
+### Create Print Job
+1. Open main page
+2. Select "New Print" tab
+3. Fill out form:
+   - Name of the print
+   - Who printed it
+   - Filament consumption in grams
+   - Select filament type
+   - Optional: Add image and link
+4. Save - price will be calculated automatically!
 
-### Statistiken ansehen
-1. Tab "📊 Statistiken" auswählen
-2. Optional: Zeitraum mit Von/Bis-Filter eingrenzen
-3. Statistiken werden automatisch geladen und visualisiert
-4. Charts sind interaktiv (Hover für Details)
+### View Statistics
+1. Select "📊 Statistics" tab
+2. Optional: Narrow down time range with From/To filter
+3. Statistics will load and visualize automatically
+4. Charts are interactive (hover for details)
 
-### Admin-Funktionen
-1. Zu `/login.html` navigieren
-2. Mit `admin` und deinem Passwort einloggen
-3. Dashboard öffnet sich mit 3 Tabs:
-   - **Übersicht**: Wer schuldet wie viel
-   - **Drucke verwalten**: Alle Einträge bearbeiten
-   - **Filamente verwalten**: Filamenttypen und Preise pflegen
+### Admin Functions
+1. Navigate to `/login.html`
+2. Login with `admin` and your password
+3. Dashboard opens with 3 tabs:
+   - **Overview**: Who owes how much
+   - **Manage Prints**: Edit all entries
+   - **Manage Filaments**: Maintain filament types and prices
 
-## 💾 Daten & Backup
+## 💾 Data & Backup
 
-Alle Daten werden lokal in deinem Projektordner gespeichert:
+All data is stored locally in your project folder:
 
-- **Datenbank**: `./data/prints.db`
-- **Bilder**: `./uploads/`
+- **Database**: `./data/prints.db`
+- **Images**: `./uploads/`
 
-### Backup erstellen
+### Create Backup
 ```bash
-# Einfach die Ordner kopieren
+# Simply copy the folders
 cp -r data data_backup
 cp -r uploads uploads_backup
 ```
 
-### Datenbank zurücksetzen
+### Reset Database
 ```bash
 docker compose down
 rm -rf data uploads
@@ -171,111 +171,118 @@ docker compose up
 
 ## 🎨 Design
 
-- **Modernes Dark Theme** mit sauberer UI
-- **Responsive Design** - funktioniert auf Desktop & Mobile
-- **Intuitive Navigation** mit Tab-System
-- **Lightbox** für Bildansicht
-- **Status-Badges** für visuelle Kennzeichnung (🔴 Offen / ✅ Bezahlt)
-- **Interaktive Charts** mit Chart.js für Statistiken
+- **Modern Dark Theme** with clean UI
+- **Responsive Design** - works on desktop & mobile
+- **Intuitive Navigation** with tab system
+- **Lightbox** for image viewing
+- **Status Badges** for visual identification (🔴 Open / ✅ Paid)
+- **Interactive Charts** with Chart.js for statistics
 
-## 🔧 Entwicklung
+## 🔧 Development
 
-### Container neu bauen
+### Rebuild Container
 ```bash
 docker compose down
 docker compose up --build
 ```
 
-### Logs anschauen
+### View Logs
 ```bash
 docker compose logs -f
 ```
 
-### In Container einloggen
+### Login to Container
 ```bash
 docker exec -it print_manager_backend bash
 ```
 
-### Port ändern
-In `docker-compose.yml` die Zeile ändern:
+### Change Port
+Change the line in `docker-compose.yml`:
 ```yaml
 ports:
-  - "8080:5000"  # Ändere 8080 zu deinem gewünschten Port
+  - "8080:5000"  # Change 8080 to your desired port
 ```
 
-## 🔒 Sicherheit
+## 🔒 Security
 
-- **JWT-basierte Authentifizierung** für Admin-Bereich
-- **Input-Validierung** auf Backend-Seite
-- **Sichere File-Uploads** mit Type-Checking
-- ⚠️ **Wichtig**: Ändere das Admin-Passwort in der `.env` Datei!
+- **JWT-based authentication** for admin area
+- **Input validation** on backend side
+- **Secure file uploads** with type checking
+- ⚠️ **Important**: Change the admin password in the `.env` file!
 
-## 📈 Technologie-Stack
+## 📈 Technology Stack
 
 - **Backend**: FastAPI (Python)
 - **Frontend**: Vanilla JavaScript + Chart.js
-- **Datenbank**: SQLite
+- **Database**: SQLite
 - **Container**: Docker + Docker Compose
 - **Charts**: Chart.js 4.4.0
 
-## 📝 Beispiel-Filamente
+## 📝 Example Filaments
 
-Bei der ersten Initialisierung werden automatisch Beispiel-Filamente angelegt:
-- PLA Schwarz (CHF 20.00/kg)
-- PLA Weiss (CHF 20.00/kg)
+On first initialization, example filaments are automatically created:
+- PLA Black (CHF 20.00/kg)
+- PLA White (CHF 20.00/kg)
 - PETG Transparent (CHF 25.00/kg)
-- ABS Rot (CHF 22.00/kg)
-- TPU Flexibel (CHF 35.00/kg)
+- ABS Red (CHF 22.00/kg)
+- TPU Flexible (CHF 35.00/kg)
 
-Diese können im Admin-Bereich angepasst oder gelöscht werden.
+These can be adjusted or deleted in the admin area.
 
 ## 🛠 Troubleshooting
 
-### Port bereits belegt?
+### Port already in use?
 ```bash
-# Ändere Port in docker-compose.yml oder stoppe den anderen Service
+# Change port in docker-compose.yml or stop the other service
 sudo lsof -i :5000
 ```
 
-### Login funktioniert nicht?
+### Login not working?
 ```bash
-# Prüfe ob .env richtig geladen wird
+# Check if .env is loaded correctly
 docker compose down
 docker compose up --build
-# Logs checken für "DEBUG - Admin Password"
+# Check logs for "DEBUG - Admin Password"
 ```
 
-### CSS/JS wird nicht aktualisiert?
+### CSS/JS not updating?
 ```bash
-# Hard Refresh im Browser: CTRL + SHIFT + R
-# Oder Cache leeren: CTRL + SHIFT + DELETE
+# Hard refresh in browser: CTRL + SHIFT + R
+# Or clear cache: CTRL + SHIFT + DELETE
 ```
 
-### Datenbank-Fehler?
+### Database errors?
 ```bash
-# Datenbank neu initialisieren
+# Reinitialize database
 docker compose down
 rm -rf data
 docker compose up
 ```
 
-### Statistiken laden nicht?
+### Statistics not loading?
 ```bash
-# Browser-Konsole öffnen (F12) und Fehler checken
-# API-Endpoint testen: http://localhost:5000/api/statistics
+# Open browser console (F12) and check for errors
+# Test API endpoint: http://localhost:5000/api/statistics
 ```
 
+## 📄 License
 
-## 👨‍💻 Autor
+This project is licensed under the MIT License with Attribution - see the [LICENSE](LICENSE) file for details.
 
-Erstellt von Elias
+**Attribution Required**: When using or modifying this code, you must:
+- Credit the original author (Elias)
+- Include a link to the original repository: https://github.com/747elias/3d-print-manager
+
+## 👨‍💻 Author
+
+Created by Elias
 
 Repository: https://github.com/747elias/3d-print-manager
 
 ## 🙏 Acknowledgments
 
-- FastAPI für das awesome Backend-Framework
-- Docker für die einfache Deployment-Lösung
-- Chart.js für die schönen, interaktiven Charts
+- FastAPI for the awesome backend framework
+- Docker for the easy deployment solution
+- Chart.js for the beautiful, interactive charts
 
 ---
