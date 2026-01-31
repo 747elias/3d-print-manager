@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: print_manager_backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - DATABASE_PATH=/app/data/prints.db
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+      - ./frontend:/app/static
+    restart: unless-stopped

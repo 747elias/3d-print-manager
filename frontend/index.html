@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D-Druck Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖨️ 3D-Druck Manager</h1>
+            <a href="/login.html" class="btn btn-secondary">Admin Login</a>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="new-print">Neuer Druck</button>
+            <button class="tab-btn" data-tab="all-prints">Alle Drucke</button>
+            <button class="tab-btn" data-tab="statistics">📊 Statistiken</button>
+        </div>
+
+        <!-- New Print Tab -->
+        <section id="new-print" class="tab-content active">
+            <div class="form-section">
+                <h2>Neuen Druck eintragen</h2>
+                <form id="printForm" enctype="multipart/form-data">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Name der Sache *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uploader">Wer hat es gedruckt? *</label>
+                            <input type="text" id="uploader" name="uploader" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="filament_grams">Filament in Gramm *</label>
+                            <input type="number" id="filament_grams" name="filament_grams" step="0.1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="filament_type">Filamenttyp *</label>
+                            <select id="filament_type" name="filament_type_id" required>
+                                <option value="">Auswählen...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="link">Link (optional)</label>
+                            <input type="url" id="link" name="link" placeholder="https://...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="image">Bild hochladen (optional)</label>
+                            <input type="file" id="image" name="image" accept="image/*">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Eintrag speichern</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- All Prints Tab -->
+        <section id="all-prints" class="tab-content">
+            <h2>Alle Drucke</h2>
+            <div id="printsGrid" class="prints-grid"></div>
+        </section>
+
+        <!-- Statistics Tab -->
+        <section id="statistics" class="tab-content">
+            <h2>📊 Statistiken</h2>
+            
+            <div class="stats-filters">
+                <div class="form-group">
+                    <label for="startDate">Von:</label>
+                    <input type="date" id="startDate">
+                </div>
+                <div class="form-group">
+                    <label for="endDate">Bis:</label>
+                    <input type="date" id="endDate">
+                </div>
+                <button class="btn btn-primary" onclick="loadStatistics()">Filtern</button>
+                <button class="btn btn-secondary" onclick="resetDateFilter()">Zurücksetzen</button>
+            </div>
+
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalPrints">-</div>
+                    <div class="stat-label">Total Drucke</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalFilament">-</div>
+                    <div class="stat-label">Total Filament (g)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCost">-</div>
+                    <div class="stat-label">Total Kosten (CHF)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgPrice">-</div>
+                    <div class="stat-label">Ø Preis/Druck (CHF)</div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Drucke pro Monat</h3>
+                    <canvas id="printsPerMonthChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Kosten pro Monat</h3>
+                    <canvas id="costsPerMonthChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Filamentverbrauch über Zeit</h3>
+                    <canvas id="filamentOverTimeChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Top 5 Drucker</h3>
+                    <canvas id="topUploadersChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Ø Verbrauch pro Filamenttyp</h3>
+                    <canvas id="avgPerFilamentChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

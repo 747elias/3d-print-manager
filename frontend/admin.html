@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - 3D-Druck Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛠️ Admin Dashboard</h1>
+            <div>
+                <a href="/" class="btn btn-secondary">Hauptseite</a>
+                <button id="logoutBtn" class="btn btn-danger">Logout</button>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="overview">Übersicht</button>
+            <button class="tab-btn" data-tab="prints">Drucke verwalten</button>
+            <button class="tab-btn" data-tab="filaments">Filamente verwalten</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <section id="overview" class="tab-content active">
+            <h2>Zahlungsübersicht</h2>
+            <div id="summaryTable"></div>
+        </section>
+
+        <!-- Prints Tab -->
+        <section id="prints" class="tab-content">
+            <h2>Drucke verwalten</h2>
+            
+            <div class="filters">
+                <select id="uploaderFilter">
+                    <option value="">Alle Personen</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="">Alle Status</option>
+                    <option value="offen">Offen</option>
+                    <option value="bezahlt">Bezahlt</option>
+                </select>
+            </div>
+
+            <div id="adminPrintsGrid" class="prints-grid"></div>
+        </section>
+
+        <!-- Filaments Tab -->
+        <section id="filaments" class="tab-content">
+            <h2>Filamente verwalten</h2>
+            
+            <form id="filamentForm" class="form-inline">
+                <input type="text" id="filamentName" placeholder="Name" required>
+                <input type="number" id="filamentPrice" placeholder="Preis/kg (CHF)" step="0.01" required>
+                <button type="submit" class="btn btn-primary">Hinzufügen</button>
+            </form>
+
+            <div id="filamentsTable"></div>
+        </section>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Druck bearbeiten</h2>
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                
+                <div class="form-group">
+                    <label for="editName">Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editUploader">Uploader</label>
+                    <input type="text" id="editUploader" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editGrams">Filament (g)</label>
+                    <input type="number" id="editGrams" step="0.1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editFilamentType">Filamenttyp</label>
+                    <select id="editFilamentType" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editLink">Link</label>
+                    <input type="url" id="editLink">
+                </div>
+
+                <div class="form-group">
+                    <label for="editStatus">Status</label>
+                    <select id="editStatus" required>
+                        <option value="offen">Offen</option>
+                        <option value="bezahlt">Bezahlt</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Speichern</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>
